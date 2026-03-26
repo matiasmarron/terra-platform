@@ -1,17 +1,11 @@
 import type { TrackingLog } from '@/types/database'
+import type { Translations } from '@/i18n'
 
 type Props = {
-  log: TrackingLog
-  onEdit: () => void
+  log:          TrackingLog
+  translations: Translations['tracking']
+  onEdit:       () => void
 }
-
-const METRICS = [
-  { key: 'mood'          as const, label: 'Estado de ánimo' },
-  { key: 'energy'        as const, label: 'Energía'          },
-  { key: 'sleep_quality' as const, label: 'Sueño'            },
-  { key: 'focus'         as const, label: 'Foco'             },
-  { key: 'calm'          as const, label: 'Calma'            },
-]
 
 function MetricDots({ value }: { value: number | null }) {
   return (
@@ -28,7 +22,15 @@ function MetricDots({ value }: { value: number | null }) {
   )
 }
 
-export default function TodaySummary({ log, onEdit }: Props) {
+export default function TodaySummary({ log, translations: tk, onEdit }: Props) {
+  const metricRows = [
+    { key: 'mood'          as const, label: tk.metrics.mood.label          },
+    { key: 'energy'        as const, label: tk.metrics.energy.label        },
+    { key: 'sleep_quality' as const, label: tk.metrics.sleep_quality.label },
+    { key: 'focus'         as const, label: tk.metrics.focus.label         },
+    { key: 'calm'          as const, label: tk.metrics.calm.label          },
+  ]
+
   const average =
     [log.mood, log.energy, log.sleep_quality, log.focus, log.calm]
       .filter((v): v is number => v !== null)
@@ -36,7 +38,7 @@ export default function TodaySummary({ log, onEdit }: Props) {
 
   return (
     <div className="space-y-6">
-      {/* Header card */}
+      {/* Header */}
       <div className="bg-[#F5EDE3] rounded-2xl p-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <span className="w-12 h-12 rounded-full bg-[#8B5E3C] flex items-center justify-center shrink-0">
@@ -45,12 +47,10 @@ export default function TodaySummary({ log, onEdit }: Props) {
             </svg>
           </span>
           <div>
-            <p className="text-sm font-medium text-[#2A1F14]">Registro de hoy completado</p>
+            <p className="text-sm font-medium text-[#2A1F14]">{tk.summary.completed}</p>
             <p className="text-xs text-[#7A6B58] mt-0.5">
-              Promedio general:{' '}
-              <span className="font-semibold text-[#8B5E3C]">
-                {average.toFixed(1)} / 5
-              </span>
+              {tk.summary.average}{' '}
+              <span className="font-semibold text-[#8B5E3C]">{average.toFixed(1)} / 5</span>
             </p>
           </div>
         </div>
@@ -58,13 +58,13 @@ export default function TodaySummary({ log, onEdit }: Props) {
           onClick={onEdit}
           className="shrink-0 text-xs font-medium text-[#8B5E3C] hover:underline underline-offset-4"
         >
-          Editar
+          {tk.form.submit_edit.split(' ')[0]}
         </button>
       </div>
 
-      {/* Metrics grid */}
+      {/* Metrics */}
       <div className="bg-white rounded-2xl border border-[#E4D9CC] divide-y divide-[#F0E9DF]">
-        {METRICS.map(({ key, label }) => (
+        {metricRows.map(({ key, label }) => (
           <div key={key} className="flex items-center justify-between px-5 py-3.5 gap-4">
             <span className="text-sm text-[#7A6B58]">{label}</span>
             <div className="flex items-center gap-3">
@@ -82,21 +82,21 @@ export default function TodaySummary({ log, onEdit }: Props) {
         <div className="bg-white rounded-2xl border border-[#E4D9CC] divide-y divide-[#F0E9DF]">
           {log.routine_followed !== null && (
             <div className="flex items-center justify-between px-5 py-3.5">
-              <span className="text-sm text-[#7A6B58]">Rutina seguida</span>
+              <span className="text-sm text-[#7A6B58]">{tk.summary.routine_label}</span>
               <span className={`text-sm font-medium ${log.routine_followed ? 'text-[#8B5E3C]' : 'text-[#A89880]'}`}>
-                {log.routine_followed ? 'Sí' : 'No'}
+                {log.routine_followed ? tk.summary.routine_yes : tk.summary.routine_no}
               </span>
             </div>
           )}
           {log.resource_used && (
             <div className="flex items-center justify-between px-5 py-3.5 gap-4">
-              <span className="text-sm text-[#7A6B58] shrink-0">Recurso usado</span>
+              <span className="text-sm text-[#7A6B58] shrink-0">{tk.summary.resource_label}</span>
               <span className="text-sm text-[#2A1F14] text-right">{log.resource_used}</span>
             </div>
           )}
           {log.notes && (
             <div className="px-5 py-3.5">
-              <span className="text-sm text-[#7A6B58] block mb-1">Notas</span>
+              <span className="text-sm text-[#7A6B58] block mb-1">{tk.summary.notes_label}</span>
               <p className="text-sm text-[#2A1F14] leading-relaxed">{log.notes}</p>
             </div>
           )}

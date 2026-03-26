@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react'
 import MetricSelector from './metric-selector'
 import { saveTrackingLog } from '@/app/actions/tracking'
 import type { TrackingLog } from '@/types/database'
+import type { Translations } from '@/i18n'
 
 type Metrics = {
   mood:          number | null
@@ -13,25 +14,13 @@ type Metrics = {
   calm:          number | null
 }
 
-const METRICS: {
-  key:       keyof Metrics
-  label:     string
-  lowLabel:  string
-  highLabel: string
-}[] = [
-  { key: 'mood',          label: 'Estado de ánimo', lowLabel: 'Bajo',    highLabel: 'Alto'  },
-  { key: 'energy',        label: 'Energía',          lowLabel: 'Sin energía', highLabel: 'Plena' },
-  { key: 'sleep_quality', label: 'Calidad del sueño', lowLabel: 'Malo',   highLabel: 'Excelente' },
-  { key: 'focus',         label: 'Foco',             lowLabel: 'Disperso', highLabel: 'Agudo' },
-  { key: 'calm',          label: 'Calma',            lowLabel: 'Ansioso', highLabel: 'Tranquilo' },
-]
-
 type Props = {
-  existing?: TrackingLog | null
-  onSaved?: () => void
+  existing?:     TrackingLog | null
+  translations:  Translations['tracking']
+  onSaved?:      () => void
 }
 
-export default function CheckInForm({ existing, onSaved }: Props) {
+export default function CheckInForm({ existing, translations: tk, onSaved }: Props) {
   const [metrics, setMetrics] = useState<Metrics>({
     mood:          existing?.mood          ?? null,
     energy:        existing?.energy        ?? null,
@@ -47,6 +36,14 @@ export default function CheckInForm({ existing, onSaved }: Props) {
 
   const allMetricsFilled = Object.values(metrics).every((v) => v !== null)
 
+  const metricDefs = [
+    { key: 'mood'          as const, ...tk.metrics.mood          },
+    { key: 'energy'        as const, ...tk.metrics.energy        },
+    { key: 'sleep_quality' as const, ...tk.metrics.sleep_quality },
+    { key: 'focus'         as const, ...tk.metrics.focus         },
+    { key: 'calm'          as const, ...tk.metrics.calm          },
+  ]
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
@@ -56,11 +53,8 @@ export default function CheckInForm({ existing, onSaved }: Props) {
     }
     startTransition(async () => {
       const result = await saveTrackingLog(formData)
-      if ('error' in result) {
-        setError(result.error)
-      } else {
-        onSaved?.()
-      }
+      if ('error' in result) setError(result.error)
+      else onSaved?.()
     })
   }
 
@@ -69,13 +63,13 @@ export default function CheckInForm({ existing, onSaved }: Props) {
 
       {/* Metrics */}
       <div className="space-y-6">
-        {METRICS.map(({ key, label, lowLabel, highLabel }) => (
+        {metricDefs.map(({ key, label, low, high }) => (
           <MetricSelector
             key={key}
             name={key}
             label={label}
-            lowLabel={lowLabel}
-            highLabel={highLabel}
+            lowLabel={low}
+            highLabel={high}
             value={metrics[key]}
             onChange={(v) => setMetrics((prev) => ({ ...prev, [key]: v }))}
           />
@@ -84,27 +78,22 @@ export default function CheckInForm({ existing, onSaved }: Props) {
 
       <div className="border-t border-[#F0E9DF] pt-6 space-y-5">
 
-        {/* Routine followed */}
+        {/* Routine */}
         <div>
-          <p className="text-sm font-medium text-[#2A1F14] mb-3">
-            ¿Seguiste tu rutina hoy?
-          </p>
+          <p className="text-sm font-medium text-[#2A1F14] mb-3">{tk.routine.label}</p>
           <div className="flex gap-3">
-            {[
-              { value: true,  label: 'Sí' },
-              { value: false, label: 'No' },
-            ].map(({ value, label }) => (
+            {([true, false] as const).map((val) => (
               <button
-                key={String(value)}
+                key={String(val)}
                 type="button"
-                onClick={() => setRoutineFollowed(value)}
+                onClick={() => setRoutineFollowed(val)}
                 className={`px-5 py-2 rounded-full text-sm font-medium border transition-all
-                  ${routineFollowed === value
+                  ${routineFollowed === val
                     ? 'bg-[#8B5E3C] border-[#8B5E3C] text-white'
                     : 'bg-white border-[#E4D9CC] text-[#7A6B58] hover:border-[#8B5E3C] hover:text-[#8B5E3C]'
                   }`}
               >
-                {label}
+                {val ? tk.summary.routine_yes : tk.summary.routine_no}
               </button>
             ))}
           </div>
@@ -113,14 +102,15 @@ export default function CheckInForm({ existing, onSaved }: Props) {
         {/* Resource used */}
         <div>
           <label htmlFor="resource_used" className="block text-sm font-medium text-[#2A1F14] mb-1.5">
-            ¿Usaste algún recurso hoy? <span className="text-[#A89880] font-normal">(opcional)</span>
+            {tk.resource.label}{' '}
+            <span className="text-[#A89880] font-normal">(opcional)</span>
           </label>
           <input
             id="resource_used"
             name="resource_used"
             type="text"
             defaultValue={existing?.resource_used ?? ''}
-            placeholder="Meditación, respiración, guía..."
+            placeholder={tk.resource.placeholder}
             className="w-full rounded-lg border border-[#E4D9CC] bg-[#FAF7F2] px-3.5 py-2.5 text-sm text-[#2A1F14] placeholder:text-[#A89880] focus:outline-none focus:ring-2 focus:ring-[#8B5E3C] focus:border-transparent"
           />
         </div>
@@ -128,14 +118,15 @@ export default function CheckInForm({ existing, onSaved }: Props) {
         {/* Notes */}
         <div>
           <label htmlFor="notes" className="block text-sm font-medium text-[#2A1F14] mb-1.5">
-            Notas <span className="text-[#A89880] font-normal">(opcional)</span>
+            {tk.notes.label}{' '}
+            <span className="text-[#A89880] font-normal">(opcional)</span>
           </label>
           <textarea
             id="notes"
             name="notes"
             rows={3}
             defaultValue={existing?.notes ?? ''}
-            placeholder="¿Algo que quieras recordar de hoy?"
+            placeholder={tk.notes.placeholder}
             className="w-full rounded-lg border border-[#E4D9CC] bg-[#FAF7F2] px-3.5 py-2.5 text-sm text-[#2A1F14] placeholder:text-[#A89880] focus:outline-none focus:ring-2 focus:ring-[#8B5E3C] focus:border-transparent resize-none"
           />
         </div>
@@ -153,15 +144,13 @@ export default function CheckInForm({ existing, onSaved }: Props) {
         className="w-full rounded-full bg-[#2A1F14] text-white text-sm font-medium py-3 hover:bg-[#8B5E3C] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {isPending
-          ? 'Guardando…'
-          : existing
-          ? 'Actualizar registro'
-          : 'Guardar registro de hoy'}
+          ? tk.form.submitting
+          : existing ? tk.form.submit_edit : tk.form.submit_new}
       </button>
 
       {!allMetricsFilled && (
         <p className="text-xs text-center text-[#A89880] -mt-4">
-          Completá todas las métricas para continuar
+          {tk.form.all_required}
         </p>
       )}
     </form>

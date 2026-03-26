@@ -1,7 +1,17 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import FaqAccordion from '@/components/ui/faq-accordion'
+import { getT } from '@/i18n'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = getT()
+  return {
+    title:       t.landing.meta_title,
+    description: t.landing.meta_description,
+  }
+}
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
