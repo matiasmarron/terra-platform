@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripe } from '@/lib/stripe'
 import { createClient } from '@supabase/supabase-js'
+import { sendConsultationConfirmedEmail } from '@/lib/resend/emails'
 
 // Use service role client for webhook — bypasses RLS
 function adminClient() {
@@ -60,6 +61,20 @@ export async function POST(request: NextRequest) {
       notes,
       payment_id:       payment.id,
     })
+
+    // Send confirmation email
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('id', userId)
+      .single()
+
+    if (profile) {
+      const { data: authUser } = await supabase.auth.admin.getUserById(userId)
+      if (authUser.user?.email) {
+        await sendConsultationConfirmedEmail(authUser.user.email, new Date(date))
+      }
+    }
   }
 
   return NextResponse.json({ ok: true })

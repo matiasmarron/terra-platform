@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { sendWelcomeEmail } from '@/lib/resend/emails'
 
 // Supabase returns English error messages — map them to Spanish
 const ERROR_MAP: Record<string, string> = {
@@ -50,12 +51,16 @@ export async function signUp(
 
   if (error) return { error: localizeError(error.message) }
 
+  const email = formData.get('email') as string
+
   // If email confirmation is disabled in Supabase, data.session exists → redirect
   if (data.session) {
+    await sendWelcomeEmail(email)
     redirect('/tracking')
   }
 
   // Email confirmation required (default Supabase behaviour)
+  // Welcome email will fire after they confirm via auth/callback
   return { message: 'Revisá tu correo para confirmar tu cuenta y empezar.' }
 }
 

@@ -275,6 +275,46 @@ const es = {
     go_settings: 'Ir a configuración →',
   },
 
+  home: {
+    greeting_morning:   'Buenos días',
+    greeting_afternoon: 'Buenas tardes',
+    greeting_evening:   'Buenas noches',
+    today_checked:      'Registro de hoy completado',
+    today_pending:      'Todavía no registraste hoy',
+    go_tracking:        'Registrar ahora →',
+    streak:             'días consecutivos',
+    avg_this_week:      'Promedio esta semana',
+    upcoming_consult:   'Próxima consulta',
+    quick_links:        'Accesos rápidos',
+  },
+
+  insights: {
+    page: {
+      title:    'Mis estadísticas',
+      subtitle: 'Cómo evolucionaron tus métricas en el tiempo.',
+    },
+    period: {
+      week:   'Última semana',
+      month:  'Último mes',
+      all:    'Todo el tiempo',
+    },
+    metrics: {
+      mood:          'Ánimo',
+      energy:        'Energía',
+      sleep_quality: 'Sueño',
+      focus:         'Foco',
+      calm:          'Calma',
+    },
+    average:        'Promedio',
+    trend_up:       'Mejora',
+    trend_down:     'Baja',
+    trend_stable:   'Estable',
+    no_data:        'Necesitás al menos 3 registros para ver estadísticas.',
+    days_logged:    'días registrados',
+    best_day:       'Mejor día',
+    routine_rate:   'Rutina seguida',
+  },
+
   consultations: {
     page: {
       title:    'Consultas',

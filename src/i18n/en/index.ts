@@ -277,6 +277,46 @@ const en: Translations = {
     go_settings: 'Go to settings →',
   },
 
+  home: {
+    greeting_morning:   'Good morning',
+    greeting_afternoon: 'Good afternoon',
+    greeting_evening:   'Good evening',
+    today_checked:      'Today\'s log completed',
+    today_pending:      'You haven\'t logged today yet',
+    go_tracking:        'Log now →',
+    streak:             'day streak',
+    avg_this_week:      'Average this week',
+    upcoming_consult:   'Upcoming consultation',
+    quick_links:        'Quick links',
+  },
+
+  insights: {
+    page: {
+      title:    'My statistics',
+      subtitle: 'How your metrics have evolved over time.',
+    },
+    period: {
+      week:   'Last week',
+      month:  'Last month',
+      all:    'All time',
+    },
+    metrics: {
+      mood:          'Mood',
+      energy:        'Energy',
+      sleep_quality: 'Sleep',
+      focus:         'Focus',
+      calm:          'Calm',
+    },
+    average:       'Average',
+    trend_up:      'Improving',
+    trend_down:    'Declining',
+    trend_stable:  'Stable',
+    no_data:       'You need at least 3 logs to see statistics.',
+    days_logged:   'days logged',
+    best_day:      'Best day',
+    routine_rate:  'Routine rate',
+  },
+
   consultations: {
     page: {
       title:    'Consultations',
