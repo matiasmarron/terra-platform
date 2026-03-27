@@ -213,6 +213,121 @@ const es = {
   dashboard: {
     coming_soon: 'Próximamente',
   },
+
+  resources: {
+    page: {
+      title:       'Recursos',
+      subtitle:    'Guías, meditaciones y herramientas para cada etapa de tu proceso.',
+      courses_tab: 'Cursos',
+      all_tab:     'Todos los recursos',
+    },
+    categories: {
+      before_starting:    'Antes de empezar',
+      during_cycle:       'Durante el ciclo',
+      difficult_moments:  'Momentos difíciles',
+      integration:        'Integración',
+      daily_life:         'Vida cotidiana',
+    },
+    types: {
+      meditation:  'Meditación',
+      breathwork:  'Respiración',
+      ritual:      'Ritual',
+      video:       'Video',
+      audio:       'Audio',
+      guide:       'Guía',
+      checklist:   'Lista',
+      course:      'Curso',
+    },
+    actions: {
+      open:     'Abrir',
+      listen:   'Escuchar',
+      watch:    'Ver',
+      download: 'Descargar',
+    },
+    premium_badge:  'Premium',
+    empty:          'No hay recursos disponibles en esta categoría.',
+  },
+
+  courses: {
+    page: {
+      title:    'Cursos',
+      subtitle: 'Caminos de aprendizaje estructurados para profundizar tu práctica.',
+    },
+    detail: {
+      modules_title: 'Módulos del curso',
+      progress:      'Tu progreso',
+      completed:     'completados',
+      start:         'Comenzar curso',
+      continue:      'Continuar',
+      finished:      '¡Curso completado!',
+    },
+    module: {
+      mark_done: 'Marcar como completado',
+      done:      'Completado',
+    },
+    empty: 'No hay cursos disponibles por el momento.',
+  },
+
+  reviews: {
+    page: {
+      title:    'Mis experiencias',
+      subtitle: 'Compartí tu proceso y ayudá a otras personas en su camino.',
+    },
+    form: {
+      title:                 'Compartir mi experiencia',
+      subtitle:              'Tu historia puede acompañar a alguien más.',
+      field_title:           'Título',
+      field_title_hint:      'Una frase que resuma tu experiencia',
+      field_body:            'Tu experiencia',
+      field_body_hint:       'Contá cómo fue tu proceso con el microdosing.',
+      field_what_changed:    '¿Qué cambió en vos?',
+      field_when_changed:    '¿Cuándo notaste el cambio?',
+      field_hardest:         '¿Qué fue lo más difícil?',
+      field_helped:          '¿Qué te ayudó más?',
+      field_routine:         'Describí tu rutina',
+      field_routine_hint:    'Protocolo, dosis, frecuencia, etc.',
+      field_rating:          'Calificación general',
+      submit:                'Enviar experiencia',
+      submitting:            'Enviando…',
+      success_title:         'Experiencia enviada',
+      success_body:          'Gracias por compartir. Tu historia será revisada antes de publicarse.',
+    },
+    list: {
+      title:       'Mis envíos',
+      empty:       'Todavía no compartiste ninguna experiencia.',
+      status: {
+        pending:  'En revisión',
+        approved: 'Publicada',
+      },
+    },
+    rewards: {
+      title:      'Mis recompensas',
+      empty:      'Completá y publicá una experiencia para ganar recompensas.',
+      redeem:     'Canjear',
+      redeemed:   'Canjeada',
+      types: {
+        discount:        'Descuento',
+        free_shipping:   'Envío gratis',
+        premium_content: 'Contenido premium',
+        badge:           'Insignia',
+      },
+    },
+    cta: 'Compartir mi experiencia →',
+  },
+
+  faq: {
+    page: {
+      title:    'Preguntas frecuentes',
+      subtitle: 'Respuestas a las dudas más comunes sobre el microdosing.',
+    },
+    categories: {
+      practical:  'Prácticas',
+      emotional:  'Emocionales',
+      process:    'Sobre el proceso',
+      safety:     'Seguridad',
+    },
+    empty: 'No hay preguntas disponibles por el momento.',
+  },
 }
 
 export default es

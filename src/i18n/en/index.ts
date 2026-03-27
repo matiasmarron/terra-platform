@@ -215,6 +215,121 @@ const en: Translations = {
   dashboard: {
     coming_soon: 'Coming soon',
   },
+
+  resources: {
+    page: {
+      title:       'Resources',
+      subtitle:    'Guides, meditations and tools for every stage of your process.',
+      courses_tab: 'Courses',
+      all_tab:     'All resources',
+    },
+    categories: {
+      before_starting:   'Before starting',
+      during_cycle:      'During the cycle',
+      difficult_moments: 'Difficult moments',
+      integration:       'Integration',
+      daily_life:        'Daily life',
+    },
+    types: {
+      meditation: 'Meditation',
+      breathwork: 'Breathwork',
+      ritual:     'Ritual',
+      video:      'Video',
+      audio:      'Audio',
+      guide:      'Guide',
+      checklist:  'Checklist',
+      course:     'Course',
+    },
+    actions: {
+      open:     'Open',
+      listen:   'Listen',
+      watch:    'Watch',
+      download: 'Download',
+    },
+    premium_badge: 'Premium',
+    empty:         'No resources available in this category.',
+  },
+
+  courses: {
+    page: {
+      title:    'Courses',
+      subtitle: 'Structured learning paths to deepen your practice.',
+    },
+    detail: {
+      modules_title: 'Course modules',
+      progress:      'Your progress',
+      completed:     'completed',
+      start:         'Start course',
+      continue:      'Continue',
+      finished:      'Course completed!',
+    },
+    module: {
+      mark_done: 'Mark as completed',
+      done:      'Completed',
+    },
+    empty: 'No courses available at the moment.',
+  },
+
+  reviews: {
+    page: {
+      title:    'My experiences',
+      subtitle: 'Share your journey and help others along their path.',
+    },
+    form: {
+      title:                 'Share my experience',
+      subtitle:              'Your story can accompany someone else.',
+      field_title:           'Title',
+      field_title_hint:      'A phrase that summarizes your experience',
+      field_body:            'Your experience',
+      field_body_hint:       'Tell us how your microdosing journey went.',
+      field_what_changed:    'What changed in you?',
+      field_when_changed:    'When did you notice the change?',
+      field_hardest:         'What was the hardest part?',
+      field_helped:          'What helped you the most?',
+      field_routine:         'Describe your routine',
+      field_routine_hint:    'Protocol, dose, frequency, etc.',
+      field_rating:          'Overall rating',
+      submit:                'Submit experience',
+      submitting:            'Submitting…',
+      success_title:         'Experience submitted',
+      success_body:          'Thank you for sharing. Your story will be reviewed before publishing.',
+    },
+    list: {
+      title:  'My submissions',
+      empty:  'You haven\'t shared any experiences yet.',
+      status: {
+        pending:  'Under review',
+        approved: 'Published',
+      },
+    },
+    rewards: {
+      title:    'My rewards',
+      empty:    'Complete and publish an experience to earn rewards.',
+      redeem:   'Redeem',
+      redeemed: 'Redeemed',
+      types: {
+        discount:        'Discount',
+        free_shipping:   'Free shipping',
+        premium_content: 'Premium content',
+        badge:           'Badge',
+      },
+    },
+    cta: 'Share my experience →',
+  },
+
+  faq: {
+    page: {
+      title:    'Frequently asked questions',
+      subtitle: 'Answers to the most common questions about microdosing.',
+    },
+    categories: {
+      practical: 'Practical',
+      emotional: 'Emotional',
+      process:   'About the process',
+      safety:    'Safety',
+    },
+    empty: 'No questions available at the moment.',
+  },
 }
 
 export default en
