@@ -216,6 +216,67 @@ const en: Translations = {
     coming_soon: 'Coming soon',
   },
 
+  settings: {
+    page: {
+      title:    'Settings',
+      subtitle: 'Customize your account and preferences.',
+    },
+    profile: {
+      section:           'Your profile',
+      display_name:      'Display name',
+      display_name_hint: 'Your name visible in the dashboard',
+      nickname:          'Community nickname',
+      nickname_hint:     'Letters, numbers and underscores only. Must be unique.',
+      language:          'Language',
+      language_es:       'Español',
+      language_en:       'English',
+      save:              'Save changes',
+      saving:            'Saving…',
+      saved:             'Changes saved',
+    },
+  },
+
+  community: {
+    page: {
+      title:    'Community',
+      subtitle: 'A trusted space to share and learn together.',
+      new_post: 'New post',
+    },
+    categories: {
+      question:   'Question',
+      reflection: 'Reflection',
+      routine:    'Routine',
+      feedback:   'Feedback',
+    },
+    post: {
+      comments_count: 'comments',
+      comment_one:    'comment',
+      by:             'by',
+      pinned:         'Pinned',
+    },
+    form: {
+      title:             'New post',
+      field_category:    'Category',
+      field_title:       'Title',
+      field_title_hint:  'What do you want to talk about?',
+      field_body:        'Content',
+      field_body_hint:   'Share what you want to say…',
+      submit:            'Post',
+      submitting:        'Posting…',
+      cancel:            'Cancel',
+    },
+    comments: {
+      title:       'Comments',
+      empty:       'Be the first to comment.',
+      placeholder: 'Write your comment…',
+      submit:      'Comment',
+      submitting:  'Sending…',
+    },
+    empty:       'No posts yet. Be the first to share!',
+    no_nickname: 'Set up your nickname before posting.',
+    go_settings: 'Go to settings →',
+  },
+
   resources: {
     page: {
       title:       'Resources',

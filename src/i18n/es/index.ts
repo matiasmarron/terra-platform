@@ -214,6 +214,67 @@ const es = {
     coming_soon: 'Próximamente',
   },
 
+  settings: {
+    page: {
+      title:    'Configuración',
+      subtitle: 'Personalizá tu cuenta y preferencias.',
+    },
+    profile: {
+      section:           'Tu perfil',
+      display_name:      'Nombre para mostrar',
+      display_name_hint: 'Tu nombre visible en el panel',
+      nickname:          'Apodo en la comunidad',
+      nickname_hint:     'Solo letras, números y guiones bajos. Único.',
+      language:          'Idioma',
+      language_es:       'Español',
+      language_en:       'English',
+      save:              'Guardar cambios',
+      saving:            'Guardando…',
+      saved:             'Cambios guardados',
+    },
+  },
+
+  community: {
+    page: {
+      title:    'Comunidad',
+      subtitle: 'Un espacio de confianza para compartir y aprender juntos.',
+      new_post: 'Nueva publicación',
+    },
+    categories: {
+      question:   'Pregunta',
+      reflection: 'Reflexión',
+      routine:    'Rutina',
+      feedback:   'Feedback',
+    },
+    post: {
+      comments_count: 'comentarios',
+      comment_one:    'comentario',
+      by:             'por',
+      pinned:         'Fijado',
+    },
+    form: {
+      title:             'Nueva publicación',
+      field_category:    'Categoría',
+      field_title:       'Título',
+      field_title_hint:  '¿Sobre qué querés hablar?',
+      field_body:        'Contenido',
+      field_body_hint:   'Compartí lo que querés decir…',
+      submit:            'Publicar',
+      submitting:        'Publicando…',
+      cancel:            'Cancelar',
+    },
+    comments: {
+      title:        'Comentarios',
+      empty:        'Sé el primero en comentar.',
+      placeholder:  'Escribí tu comentario…',
+      submit:       'Comentar',
+      submitting:   'Enviando…',
+    },
+    empty: 'Todavía no hay publicaciones. ¡Sé el primero en compartir!',
+    no_nickname: 'Configurá tu apodo antes de publicar.',
+    go_settings: 'Ir a configuración →',
+  },
+
   resources: {
     page: {
       title:       'Recursos',
