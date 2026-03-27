@@ -277,6 +277,47 @@ const en: Translations = {
     go_settings: 'Go to settings →',
   },
 
+  consultations: {
+    page: {
+      title:    'Consultations',
+      subtitle: 'Book a one-on-one session with a facilitator.',
+      book_cta: 'Book consultation',
+    },
+    booking: {
+      title:         'New consultation',
+      subtitle:      'Choose the day and time that works best for you.',
+      field_date:    'Date',
+      field_time:    'Time',
+      field_notes:   'Prior notes',
+      notes_hint:    'Anything you want to share with the facilitator before the session? (optional)',
+      duration:      '60 minutes',
+      price_usd:     'USD 50',
+      price_ars:     'ARS 50,000',
+      payment_title: 'Choose how to pay',
+      stripe_label:  'International card (Stripe)',
+      mp_label:      'Mercado Pago (LATAM)',
+      submit:        'Confirm and pay',
+      submitting:    'Redirecting…',
+    },
+    status: {
+      pending:   'Pending',
+      confirmed: 'Confirmed',
+      completed: 'Completed',
+      cancelled: 'Cancelled',
+    },
+    list: {
+      upcoming: 'Upcoming consultations',
+      past:     'History',
+      empty:    'You have no consultations booked yet.',
+      duration: 'min',
+    },
+    success: {
+      title: 'Consultation confirmed!',
+      body:  'We sent you an email with the details. See you soon.',
+      back:  'Back to consultations',
+    },
+  },
+
   resources: {
     page: {
       title:       'Resources',

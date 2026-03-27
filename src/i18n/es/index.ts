@@ -275,6 +275,47 @@ const es = {
     go_settings: 'Ir a configuración →',
   },
 
+  consultations: {
+    page: {
+      title:    'Consultas',
+      subtitle: 'Agendá una sesión individual con un facilitador.',
+      book_cta: 'Agendar consulta',
+    },
+    booking: {
+      title:        'Nueva consulta',
+      subtitle:     'Elegí el día y horario que mejor te venga.',
+      field_date:   'Fecha',
+      field_time:   'Horario',
+      field_notes:  'Notas previas',
+      notes_hint:   '¿Algo que quieras contarle al facilitador antes de la sesión? (opcional)',
+      duration:     '60 minutos',
+      price_usd:    'USD 50',
+      price_ars:    'ARS 50.000',
+      payment_title: 'Elegí cómo pagar',
+      stripe_label:  'Tarjeta internacional (Stripe)',
+      mp_label:      'Mercado Pago (LATAM)',
+      submit:        'Confirmar y pagar',
+      submitting:    'Redirigiendo…',
+    },
+    status: {
+      pending:   'Pendiente',
+      confirmed: 'Confirmada',
+      completed: 'Completada',
+      cancelled: 'Cancelada',
+    },
+    list: {
+      upcoming: 'Próximas consultas',
+      past:     'Historial',
+      empty:    'Todavía no tenés consultas agendadas.',
+      duration: 'min',
+    },
+    success: {
+      title: '¡Consulta confirmada!',
+      body:  'Te enviamos un correo con los detalles. Nos vemos pronto.',
+      back:  'Volver a consultas',
+    },
+  },
+
   resources: {
     page: {
       title:       'Recursos',
